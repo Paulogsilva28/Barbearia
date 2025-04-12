@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['sendEmail'])) {
                               <p><strong>Email:</strong> $email</p>
                               <p><strong>Mensagem:</strong></p>
                               <p>$mensagem</p>";
-
+//verivicar mnsg de erro
             $mail->send();
             $successMessage = 'E-mail enviado com sucesso!';
         } catch (Exception $e) {
