@@ -40,7 +40,7 @@
         const menu = document.querySelector('.menu-principal');
     
         menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active'); // Alterna a classe 'active' no menu
+            menu.classList.toggle('active'); // Alterna a classe 'activee' no menu
         });
     </script>
     
