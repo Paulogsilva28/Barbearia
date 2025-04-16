@@ -84,27 +84,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['sendEmail'])) {
         </nav>
         <script src="<?= BASE_URL?>public/assets/script/menu.js"></script>
     </header>
-
     <div class="modal" id="contactModal">
-        <div class="modal-content-1">
-            <span class="close" onclick="closeContactModal()">&times;</span>
-            <h3 class="fale-conosco">Fale <span class="conosco">Conosco</span></h3>
-            <div id="contato" class="contato-container">
-                <?php if(isset($successMessage)) echo "<p style='color:green;'>$successMessage</p>"; ?>
-                <?php if(isset($errorMessage)) echo "<p style='color:red;'>$errorMessage</p>"; ?>
-                <form class="form-email" method="POST">
+    <div class="modal-content-1">
+        <span class="close" onclick="closeContactModal()">&times;</span>
+        <h3 class="fale-conosco">Fale <span class="conosco">Conosco</span></h3>
+        <div id="contato" class="contato-container">
+            <?php if(isset($errorMessage)) echo "<p style='color:red;'>$errorMessage</p>"; ?>
+            <form class="form-email" method="POST">
                 <label for="user_name">Nome:</label>
                 <input type="text" name="user_name" id="user_name" required>
                 <label for="user_email">E-mail:</label>
                 <input type="email" name="user_email" id="user_email" required>
-                    <label for="mensagem">Mensagem</label>
-                    <textarea name="mensagem" id="mensagem" required></textarea>
-                    <button type="submit" name="sendEmail" data-button>Enviar</button>
-                </form>
-            </div>
-            <div class="success-message"></div>
+                <label for="mensagem">Mensagem</label>
+                <textarea name="mensagem" id="mensagem" required></textarea>
+                <button type="submit" name="sendEmail" data-button>Enviar</button>
+            </form>
         </div>
     </div>
+</div>
+
+<script>
+    <?php if (isset($successMessage)): ?>
+        window.alert('<?php echo $successMessage; ?>');
+        // Opcional: Fechar o modal após o alerta
+        // closeContactModal();
+    <?php endif; ?>
+
+    function openContactModal() {
+        document.getElementById('contactModal').style.display = 'block';
+    }
+
+    function closeContactModal() {
+        document.getElementById('contactModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('contactModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
    
     <!-- Main Content -->
